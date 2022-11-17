@@ -1,14 +1,44 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
+import React, { Suspense, lazy } from "react";
+import ReactDOM from "react-dom/client";
+import reportWebVitals from "./reportWebVitals";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Routes,
+  createRoutesFromElements,
+  ScrollRestoration,
+} from "react-router-dom";
+import LoadingIcon from "./utilities/loadingIcon/LoadingIcon";
+const DashboardPage = lazy(() => import("./dashboardPage/DashboardPage"));
+const SettingsPage = lazy(
+  () => import("./dataAnalyticsPage/DataAnalyticsPage")
+);
+const SchedulingPage = lazy(() => import("./schedulingPage/SchedulingPage"));
+const DataAnalytics = lazy(
+  () => import("./dataAnalyticsPage/DataAnalyticsPage")
+);
+const AboutPage = lazy(() => import("./aboutPage/AboutPage"));
+const HomePage = lazy(() => import("./homePage/HomePage"));
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<HomePage />}>
+      <Route path="dashboard" element={<DashboardPage />} />
+      <Route path="settings" element={<SettingsPage />} />
+      <Route path="scheduling" element={<SchedulingPage />} />
+      <Route path="data-analytics" element={<DataAnalytics />} />
+      <Route path="about" element={<AboutPage />} />
+    </Route>
+  )
+);
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <Suspense fallback={<LoadingIcon entireViewPort />}>
+      <RouterProvider router={router} />
+    </Suspense>
   </React.StrictMode>
 );
 
