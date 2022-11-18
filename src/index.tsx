@@ -5,15 +5,12 @@ import {
   createBrowserRouter,
   RouterProvider,
   Route,
-  Routes,
   createRoutesFromElements,
-  ScrollRestoration,
 } from "react-router-dom";
 import LoadingIcon from "./utilities/loadingIcon/LoadingIcon";
+import Root from "./root";
 const DashboardPage = lazy(() => import("./dashboardPage/DashboardPage"));
-const SettingsPage = lazy(
-  () => import("./dataAnalyticsPage/DataAnalyticsPage")
-);
+const SettingsPage = lazy(() => import("./settingsPage/SettingsPage"));
 const SchedulingPage = lazy(() => import("./schedulingPage/SchedulingPage"));
 const DataAnalytics = lazy(
   () => import("./dataAnalyticsPage/DataAnalyticsPage")
@@ -22,12 +19,14 @@ const AboutPage = lazy(() => import("./aboutPage/AboutPage"));
 const HomePage = lazy(() => import("./homePage/HomePage"));
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<HomePage />}>
-      <Route path="dashboard" element={<DashboardPage />} />
-      <Route path="settings" element={<SettingsPage />} />
-      <Route path="scheduling" element={<SchedulingPage />} />
-      <Route path="data-analytics" element={<DataAnalytics />} />
-      <Route path="about" element={<AboutPage />} />
+    <Route path="/" element={<Root />}>
+      <Route index element={<HomePage />} />
+      <Route path="home/*" element={<HomePage />} />
+      <Route path="dashboard/*" element={<DashboardPage />} />
+      <Route path="settings/*" element={<SettingsPage />} />
+      <Route path="scheduling/*" element={<SchedulingPage />} />
+      <Route path="data-analytics/*" element={<DataAnalytics />} />
+      <Route path="about/*" element={<AboutPage />} />
     </Route>
   )
 );

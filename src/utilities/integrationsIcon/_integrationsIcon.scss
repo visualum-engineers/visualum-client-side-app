@@ -1,0 +1,23 @@
+.integrations-icon {
+  display: flex;
+  flex-direction: column;
+  font-size: 50%;
+  line-height: 0%;
+  div {
+    &:first-child {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      svg {
+        &:first-child {
+          margin-right: 0.25em;
+        }
+      }
+    }
+    &:last-child {
+      display: flex;
+      margin-top: 0.125em;
+      padding: 0;
+    }
+  }
+}

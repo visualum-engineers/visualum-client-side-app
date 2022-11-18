@@ -1,8 +1,7 @@
-import { ScrollRestoration } from "react-router-dom";
 const HomePage = () => {
   return (
     <>
-      <ScrollRestoration />
+    Home page
     </>
   );
 };
