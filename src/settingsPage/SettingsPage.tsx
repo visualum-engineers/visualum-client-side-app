@@ -1,7 +1,11 @@
 import { Suspense } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import{faCircleUser, faBell, faMoneyBill} from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleUser,
+  faBell,
+  faMoneyBill,
+} from "@fortawesome/free-solid-svg-icons";
 
 import useWindowWidth from "../hooks/use-window-width";
 import LoadingIcon from "../utilities/loadingIcon/LoadingIcon";
@@ -12,26 +16,26 @@ const settingItemsData = [
   {
     title: "Account",
     link: generateSettingsLink("account"),
-    icon: <FontAwesomeIcon icon={faCircleUser}/>,
-    description: ""
+    icon: <FontAwesomeIcon icon={faCircleUser} />,
+    description: "Change your profile, personal, or login information",
   },
   {
     title: "Integrations",
     link: generateSettingsLink("integrations"),
     icon: <IntegrationsIcon />,
-    description: "",
+    description: "Add and/or remove your linked accounts",
   },
   {
     title: "Notifications",
     link: generateSettingsLink("notifications"),
-    icon: <FontAwesomeIcon icon={faBell}/>,
-    description: ""
+    icon: <FontAwesomeIcon icon={faBell} />,
+    description: "Manage and set how and why we contact you",
   },
   {
     title: "Billing",
     link: generateSettingsLink("billing"),
-    icon: <FontAwesomeIcon icon={faMoneyBill}/>,
-    description: ""
+    icon: <FontAwesomeIcon icon={faMoneyBill} />,
+    description: "Manage your billing information, and your subscription plan",
   },
 ];
 const SettingItemRow = ({
@@ -48,20 +52,22 @@ const SettingItemRow = ({
   const internalEls = (
     <>
       <h4>
-        <div className="setting-item-row-icon"> {icon}</div>
-        {title && <div className="setting-item-row-title">{title}</div>}
+        <div className={`${namespace}-setting-item-row-icon`}> {icon}</div>
+        {title && (
+          <div className={`${namespace}-setting-item-row-title`}>{title}</div>
+        )}
       </h4>
       {description && <p>{description}</p>}
     </>
   );
   return (
-    <div className="setting-item-row">
+    <div className={`${namespace}-setting-item-row`}>
       {link ? (
-        <Link to={link} className="setting-item">
+        <Link to={link} className={`${namespace}-setting-item`}>
           {internalEls}
         </Link>
       ) : (
-        <div className="setting-item">{internalEls}</div>
+        <div className={`${namespace}-setting-item`}>{internalEls}</div>
       )}
     </div>
   );
@@ -80,7 +86,7 @@ const SettingsWrapper = ({ children }: { children: JSX.Element }) => {
               title={smallWindowWidth ? item.title : undefined}
               description={mediumWindowWidth ? item.description : undefined}
               link={item.link}
-              icon = {item.icon}
+              icon={item.icon}
             />
           ))}
         </>

@@ -1,0 +1,21 @@
+@mixin settings-pg-md {
+  $namespace: "settings-pg";
+  .#{$namespace}-setting-item {
+    justify-content: center;
+    h4 {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+@mixin settings-pg-sm {
+  $namespace: "settings-pg";
+  .#{$namespace}-setting-item-row-icon {
+    margin-right: 0;
+  }
+  .#{$namespace}-setting-item {
+    justify-content: center;
+    h4 {
+      margin-bottom: 0.75rem;
+    }
+  }
+}

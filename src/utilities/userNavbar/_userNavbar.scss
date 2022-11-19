@@ -1,15 +1,7 @@
 $namespace: "user-navbar";
 $user-navbar-width: 3rem;
-// .#{$namespace}-container {
-// //   position: absolute;
-// //   top: $navbar-height;
-// //   left: 0;
-// //   min-height: calc(100vh - #{$navbar-height});
-//   //height: 100%;
-// }
 .#{$namespace} {
   min-height: calc(100vh - #{$navbar-height});
-  //min-height: 100vh;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -19,8 +11,18 @@ $user-navbar-width: 3rem;
   overflow-y: auto;
   background-color: $purple;
   width: $user-navbar-width;
+  &.horizontal-layout{
+    position: absolute;
+    flex-direction: row;
+    top: unset;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    min-height: auto;
+    width: 100%;
+    height: $user-navbar-width;
+  }
 }
-
 .#{$namespace}-btn {
   position: sticky;
   color: white;

@@ -1,0 +1,17 @@
+@import "../src/settingsPage/settingBreakpoints";
+@media (min-width: 992px) {
+}
+
+@media (max-width: 992px) {
+  @include settings-pg-md;
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 575px) {
+  @include settings-pg-sm;
+}
+
+@media (any-hover: hover) {
+}
