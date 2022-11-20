@@ -47,7 +47,6 @@ const UserNavBar = () => {
   //this is correct for index route, in none match
   if (!dataRegex.includes(true)) dataRegex[0] = true;
   return (
-    // <div className={`${namespace}-container`}>
       <nav
         className={`${namespace}${
           !smallWindowWidth ? " horizontal-layout" : ""
@@ -66,7 +65,6 @@ const UserNavBar = () => {
         })}
         {smallWindowWidth && <UserProfile />}
       </nav>
-    // </div>
   );
 };
 export default UserNavBar;

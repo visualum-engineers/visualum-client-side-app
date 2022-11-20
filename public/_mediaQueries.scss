@@ -3,10 +3,10 @@
 }
 
 @media (max-width: 992px) {
-  @include settings-pg-md;
 }
 
 @media (max-width: 768px) {
+  @include settings-pg-md;
 }
 
 @media (max-width: 575px) {
