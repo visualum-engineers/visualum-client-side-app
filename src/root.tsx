@@ -7,7 +7,7 @@ const Root = () => {
     <>
       <ScrollRestoration />
       <GeneralNavBar />
-      <div style={{display: "flex", width: "100%", marginTop: "3rem"}}>
+      <div id={"general-app-container"}>
         <UserNavBar />
         <Outlet />
       </div>

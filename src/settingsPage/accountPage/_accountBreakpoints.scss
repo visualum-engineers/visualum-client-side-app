@@ -1,0 +1,20 @@
+@mixin settings-account-sm {
+  $namespace: "settings-pg-account";
+  .#{$namespace}-form {
+    flex-direction: column;
+    justify-content: start;
+    flex-wrap: unset;
+    .form-inputs-container {
+      margin: 0%;
+      padding: 0 2%;
+      margin-bottom: 1.5em;
+      width: auto;
+    }
+    h3 {
+      width: auto;
+      display: flex;
+      margin: 0;
+      padding: 2%;
+    }
+  }
+}

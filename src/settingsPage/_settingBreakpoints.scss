@@ -1,3 +1,4 @@
+@import "./accountPage/accountBreakpoints";
 @mixin settings-pg-md {
   $namespace: "settings-pg";
   .#{$namespace}-setting-item {
@@ -18,4 +19,8 @@
       margin-bottom: 0.75rem;
     }
   }
+  .#{$namespace}-sidebar {
+    height: calc(100vh - #{$navbar-height} * 2);
+  }
+  @include settings-account-sm;
 }

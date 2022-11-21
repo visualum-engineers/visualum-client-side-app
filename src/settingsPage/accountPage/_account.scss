@@ -1,0 +1,47 @@
+//account page
+$namespace: "settings-pg-account";
+.#{$namespace}-container {
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.#{$namespace}-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  .form-inputs-container {
+    margin: 0 5%;
+    margin-bottom: 1.7em;
+    width: 40%;
+  }
+  h3 {
+    width: 100%;
+    font-size: 150%;
+    margin: 0 5%;
+    margin-bottom: 1.2em;
+    color: $light-black;
+    font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+.#{$namespace}-change-btns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  button {
+    @include remove-btn-default;
+    font-size: 100%;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    &:first-child {
+      color: $blue;
+    }
+    &:last-child {
+      color: $red;
+    }
+  }
+}

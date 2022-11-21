@@ -11,8 +11,8 @@ $user-navbar-width: 3rem;
   overflow-y: auto;
   background-color: $purple;
   width: $user-navbar-width;
-  &.horizontal-layout{
-    position: absolute;
+  &.horizontal-layout {
+    position: fixed;
     flex-direction: row;
     top: unset;
     bottom: 0;

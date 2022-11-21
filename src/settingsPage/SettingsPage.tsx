@@ -10,10 +10,10 @@ import {
 import useWindowWidth from "../hooks/use-window-width";
 import LoadingIcon from "../utilities/loadingIcon/LoadingIcon";
 import IntegrationsIcon from "../utilities/integrationsIcon/IntegrationsIcon";
-import Account from "./Account";
-import Notifications from "./Notifications";
-import Integrations from "./Integrations";
-import Billing from "./Billing";
+import Account from "./accountPage/Account";
+import Notifications from "./notificationsPage/Notifications";
+import Integrations from "./integrationsPage/Integrations";
+import Billing from "./billingPage/Billing";
 const namespace = "settings-pg";
 const generateSettingsLink = (str: string) => `/settings/${str}`;
 const settingItemsData = [
