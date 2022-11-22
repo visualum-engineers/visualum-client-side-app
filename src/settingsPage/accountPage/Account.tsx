@@ -9,6 +9,7 @@ const testUser = {
   _id: uuid(),
   first_name: "Emilio",
   last_name: "Sameniego",
+  language: "english",
 };
 const AccountFormWrapper = ({
   children,
@@ -76,7 +77,7 @@ const Account = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
   return (
     <div className={`${namespace}-container`}>
-      <UserProfile editControls={false} user={testUser} />
+      <UserProfile editControls={true} user={testUser} imageSize={"200px"} />
       <Profile />
       <LoginInfo />
       <PersonalInfo />

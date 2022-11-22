@@ -12,6 +12,10 @@ $namespace: "settings-pg-account";
   width: 100%;
   justify-content: space-around;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
   .form-inputs-container {
     margin: 0 5%;
     margin-bottom: 1.7em;
