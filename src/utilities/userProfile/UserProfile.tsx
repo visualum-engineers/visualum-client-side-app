@@ -4,17 +4,18 @@ import { useEffect, useRef, useState } from "react";
 import Avatar, { ConfigProvider } from "../reactAvatar/react-avatar";
 import useCursorInside from "../../hooks/use-cursor-inside";
 import useWindowWidth from "../../hooks/use-window-width";
-type MediaLink = {
+export type MediaLink = {
   mediaType: "image" | "video";
   caption?: string;
   description?: string;
   link: string;
 };
-type UserProps = {
+export type UserProps = {
   _id: string;
   first_name: string;
   last_name: string;
   language: string;
+  personal_website?: string;
   email?: string;
   interests?: string[];
   login_methods?: string[];
@@ -26,7 +27,7 @@ type UserProps = {
     city?: string;
     country?: string;
   };
-  phoneNum?: string;
+  phone_num?: string;
 };
 const namespace = "user-profile";
 export const ChangeProfilePopUpModal = ({

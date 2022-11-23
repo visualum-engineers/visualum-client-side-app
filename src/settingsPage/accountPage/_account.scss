@@ -21,13 +21,69 @@ $namespace: "settings-pg-account";
     margin-bottom: 1.7em;
     width: 40%;
   }
+}
+.#{$namespace}-form-title {
+  margin: 0 5%;
+  margin-bottom: 1.2em;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 2rem;
+  button {
+    @include remove-btn-default;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $blue;
+    color: $white;
+    border-radius: 0.3rem;
+    padding: 0 3.5%;
+    font-weight: 600;
+    font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    span {
+      margin: 0;
+      margin-left: 15%;
+    }
+  }
   h3 {
+    margin: 0;
     width: 100%;
     font-size: 150%;
-    margin: 0 5%;
-    margin-bottom: 1.2em;
     color: $light-black;
     font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+}
+.#{$namespace}-form-submit-btns {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  padding: 5%;
+  height: 2rem;
+  button {
+    cursor: pointer;
+    @include remove-btn-default;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 0.4rem;
+    font-weight: 600;
+    font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding: 0 5%;
+    &:first-child {
+      margin-right: 1rem;
+      background-color: $white;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      color: $light-black;
+    }
+    &:last-child {
+      border: 1px solid $blue;
+      background-color: $blue;
+      color: $white;
+    }
   }
 }
 .#{$namespace}-change-btns {
@@ -47,5 +103,21 @@ $namespace: "settings-pg-account";
     &:last-child {
       color: $red;
     }
+  }
+}
+.#{$namespace}-display-input {
+  h5 {
+    font-size: 100%;
+    margin: 0;
+    margin-bottom: 0.4em;
+    font-weight: 600;
+  }
+  p {
+    font-size: 95%;
+    margin: 0;
+    border-radius: 0.3em;
+    border: 0.5px solid rgba(255, 255, 255, 0);
+    padding: 0.5em 0em;
+    height: 1em;
   }
 }

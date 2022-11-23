@@ -10,11 +10,16 @@
       margin-bottom: 1.5em;
       width: auto;
     }
-    h3 {
-      width: auto;
-      display: flex;
-      margin: 0;
-      padding: 2%;
-    }
+  }
+  .#{$namespace}-form-title {
+    width: auto;
+    display: flex;
+    margin: 0;
+    padding: 2%;
+    margin-bottom: 1rem;
+  }
+  .#{$namespace}-form-submit-btns {
+    width: auto;
+    justify-content: center;
   }
 }
