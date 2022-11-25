@@ -1,5 +1,3 @@
-'use strict';
-
 var _typeof = require("@babel/runtime/helpers/typeof");
 
 var _Reflect$construct = require("core-js-pure/stable/reflect/construct.js");

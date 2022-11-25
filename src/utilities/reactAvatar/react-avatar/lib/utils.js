@@ -1,5 +1,3 @@
-'use strict';
-
 var _Object$defineProperty = require("core-js-pure/stable/object/define-property.js");
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");

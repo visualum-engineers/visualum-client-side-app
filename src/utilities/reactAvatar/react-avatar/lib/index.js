@@ -1,5 +1,3 @@
-'use strict';
-
 var _typeof = require("@babel/runtime/helpers/typeof");
 
 var _WeakMap = require("core-js-pure/stable/weak-map/index.js");

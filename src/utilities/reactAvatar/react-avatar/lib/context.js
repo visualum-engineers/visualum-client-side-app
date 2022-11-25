@@ -1,5 +1,3 @@
-"use strict";
-
 var _Reflect$construct = require("core-js-pure/stable/reflect/construct.js");
 
 var _Object$defineProperty = require("core-js-pure/stable/object/define-property.js");

@@ -75,6 +75,7 @@ const UserProfile = ({
         ) : null}
         {editControls && (!smallWindowWidth || buttonInside) && (
           <button
+            type="button"
             className={`${namespace}-change-btn`}
             onClick={() => setChangeProfile(true)}
             aria-label={"change-profile-picture"}
@@ -87,7 +88,7 @@ const UserProfile = ({
   );
   return (
     <>
-      {editControls ? (
+      {!editControls ? (
         <Link className={`${namespace}-container`} to={link}>
           {innerEls}
         </Link>

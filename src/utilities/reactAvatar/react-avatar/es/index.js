@@ -1,5 +1,3 @@
-'use strict';
-
 import createAvatarComponent from './avatar';
 import gravatarSource from './sources/Gravatar';
 import facebookSource from './sources/Facebook';

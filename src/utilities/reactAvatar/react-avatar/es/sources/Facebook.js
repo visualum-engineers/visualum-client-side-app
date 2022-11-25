@@ -1,5 +1,3 @@
-'use strict';
-
 import _createClass from "@babel/runtime/helpers/createClass";
 import _classCallCheck from "@babel/runtime/helpers/classCallCheck";
 import _defineProperty from "@babel/runtime/helpers/defineProperty";

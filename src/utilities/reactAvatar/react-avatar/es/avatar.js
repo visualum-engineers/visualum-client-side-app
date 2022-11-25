@@ -1,5 +1,3 @@
-'use strict';
-
 import _extends from "@babel/runtime/helpers/extends";
 import _Object$assign from "core-js-pure/stable/object/assign.js";
 import React from 'react';

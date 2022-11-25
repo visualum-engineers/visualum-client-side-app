@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import LoadingIcon from "./utilities/loadingIcon/LoadingIcon";
 import Root from "./root";
-import { ConfigProvider } from "react-avatar";
 const DashboardPage = lazy(() => import("./dashboardPage/DashboardPage"));
 const SettingsPage = lazy(() => import("./settingsPage/SettingsPage"));
 const SchedulingPage = lazy(() => import("./schedulingPage/SchedulingPage"));

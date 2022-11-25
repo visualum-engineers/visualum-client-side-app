@@ -1,6 +1,7 @@
 import UserProfile, {
   UserProps,
 } from "../../utilities/userProfile/UserProfile";
+import axios from "axios";
 import { v4 as uuid } from "uuid";
 import PassiveFormInput from "../../utilities/formInputs/FormInputs";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import useFormEdit from "./use-form-edit";
+import LoadingIcon from "../../utilities/loadingIcon/LoadingIcon";
 const namespace = "settings-pg-account";
 const testUser = {
   _id: uuid(),
@@ -24,24 +26,51 @@ const DisplayInput = ({ title, value }: { title: string; value: string }) => {
   );
 };
 const AccountFormWrapper = ({
+  user,
   children,
   title,
   onSubmit,
   editMode,
   editModeCallback,
 }: {
+  user?: UserProps;
   editMode?: boolean;
   editModeCallback?: (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => void;
   children: JSX.Element;
   title?: string;
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
+  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void | object;
 }) => {
-  const [isLoading, setIsLoading] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(true);
+  const [err, setErr] = useState({ err: false, message: "" });
+  const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    setIsLoading(true);
+    const submissionObject = onSubmit ? onSubmit(e) : {};
+    const userData = { ...user, ...submissionObject };
+    //url
+    const link = "";
+    try {
+      const result = await axios({
+        method: "post",
+        url: link,
+        data: userData,
+      });
+      const { data } = result;
+      if (data.err) setIsLoading(false);
+      setErr({ err: true, message: "Something went wrong. Please try again" });
+    } catch (err) {
+      setIsLoading(false);
+      setErr({ err: true, message: "Something went wrong. Please try again" });
+    }
+  };
   return (
-    <form className={`${namespace}-form`} onSubmit={onSubmit}>
+    <form className={`${namespace}-form`} onSubmit={onSubmitForm}>
+      {isLoading && (
+        <div>
+          <LoadingIcon />
+        </div>
+      )}
       <div className={`${namespace}-form-title`}>
         <h3>{title}</h3>
         {!editMode && (
@@ -115,6 +144,7 @@ const Profile = ({ user }: { user: UserProps }) => {
       onSubmit={onSubmit}
       editMode={editState}
       editModeCallback={editCallback}
+      user={user}
     >
       <>{editState ? editInputs : displayInputs}</>
     </AccountFormWrapper>
@@ -141,6 +171,7 @@ const LoginInfo = ({ user }: { user: UserProps }) => {
       onSubmit={onSubmit}
       editMode={editState}
       editModeCallback={editCallback}
+      user={user}
     >
       <>
         {editState ? editInputs : displayInputs}
@@ -212,6 +243,7 @@ const PersonalInfo = ({ user }: { user: UserProps }) => {
       onSubmit={onSubmit}
       editMode={editState}
       editModeCallback={editCallback}
+      user={user}
     >
       <>{editState ? editInputs : displayInputs}</>
     </AccountFormWrapper>
