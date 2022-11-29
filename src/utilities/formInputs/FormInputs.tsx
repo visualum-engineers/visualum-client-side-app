@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CreatableSelect from "react-select/creatable";
 import Select, { MultiValue, SingleValue } from "react-select";
 type FormInputProps = {
   title: string;
@@ -162,7 +163,68 @@ export const PassiveDropDownInput = ({
     </div>
   );
 };
-
+export const PassiveCreateDropDownInput = ({
+  title,
+  className,
+  required,
+  defaultValue,
+  options,
+  isMulti = false,
+  isClearable,
+}: {
+  isClearable?: boolean;
+  isMulti?: boolean;
+  options: MultiValue<Option>;
+  defaultValue?: string[] | string;
+} & Omit<FormInputProps, "defaultValue">) => {
+  const [value, setValue] = useState(
+    Array.isArray(defaultValue)
+      ? JSON.stringify(defaultValue)
+      : defaultValue
+      ? defaultValue
+      : ""
+  );
+  const defaultOption: Option | MultiValue<Option> | undefined = defaultValue
+    ? transformToOptions(defaultValue)
+    : undefined;
+  return (
+    <div className={`form-dropdown-container ${className ? className : ""}`}>
+      <label htmlFor={`${title}-input`}>{title}</label>
+      <CreatableSelect
+        options={options}
+        defaultValue={defaultOption}
+        classNamePrefix={"dropdown-input"}
+        name={`${title}-dropdown`}
+        id={`${title}-input`}
+        onChange={(e) => {
+          if (!e) return setValue("");
+          if (!isMultiValue(e)) return setValue(e.value ? e.value : "");
+          const selected = e.map((e) => e.value);
+          const stringValue = JSON.stringify(selected);
+          return setValue(stringValue ? stringValue : "");
+        }}
+        isMulti={isMulti}
+        isClearable={isClearable}
+        required={required}
+      />
+      <input
+        style={{
+          position: "absolute",
+          zIndex: -1,
+          visibility: "hidden",
+          padding: 0,
+          margin: 0,
+          fontSize: 0,
+          width: 0,
+          height: 0,
+        }}
+        name={`${title}`}
+        value={value}
+        onChange={() => {}}
+      />
+    </div>
+  );
+};
 export const ControlledDropDownInput = ({
   title,
   className,

@@ -14,11 +14,11 @@ export type UserProps = {
   _id: string;
   first_name: string;
   last_name: string;
-  language: string;
+  interests?: string[];
   personal_website?: string;
   email?: string;
-  interests?: string[];
   login_methods?: string[];
+  language: string;
   company?: {
     name?: string;
     occupation?: string;

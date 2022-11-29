@@ -4,8 +4,8 @@ import UserProfile, {
 import axios from "axios";
 import { v4 as uuid } from "uuid";
 import PassiveFormInput, {
-  ControlledDropDownInput,
   isMultiValue,
+  PassiveCreateDropDownInput,
   PassiveDropDownInput,
   transformToOptions,
 } from "../../utilities/formInputs/FormInputs";
@@ -25,6 +25,11 @@ const testUser = {
 };
 const hobbies = transformToOptions(["Travel", "Lol"]);
 const hobbiesOptions = isMultiValue(hobbies) ? hobbies : [];
+const getFormInputs = (e: React.FormEvent<HTMLFormElement>) => {
+  const formData = new FormData(e.currentTarget);
+  const entries = Object.fromEntries(formData.entries());
+  return entries;
+};
 const DisplayInput = ({ title, value }: { title: string; value: string }) => {
   return (
     <div className={`form-inputs-container ${namespace}-display-input`}>
@@ -112,9 +117,6 @@ const AccountFormWrapper = ({
 
 const Profile = ({ user }: { user: UserProps }) => {
   const { editState, editCallback } = useFormEdit();
-  // const [interests, setInterests] = useState(
-  //   user.interests ? user.interests : []
-  // );
   const inputValues: { [key: string]: string | string[] } = {
     "First Name:": user.first_name,
     "Last Name:": user.last_name,
@@ -122,8 +124,7 @@ const Profile = ({ user }: { user: UserProps }) => {
     "Hobbies/Interests:": user.interests ? user.interests : "N/A",
   };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    const formData = new FormData(e.currentTarget);
-    const entries = Object.fromEntries(formData.entries());
+    const entries = getFormInputs(e);
     const data = {
       first_name: entries["First Name:"],
       last_name: entries["Last Name:"],
@@ -149,7 +150,7 @@ const Profile = ({ user }: { user: UserProps }) => {
             }
           />
         ))}
-      <PassiveDropDownInput
+      <PassiveCreateDropDownInput
         title={"Hobbies/Interests:"}
         options={hobbiesOptions}
         isMulti
@@ -183,7 +184,11 @@ const Profile = ({ user }: { user: UserProps }) => {
 const LoginInfo = ({ user }: { user: UserProps }) => {
   const { editState, editCallback } = useFormEdit();
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const entries = getFormInputs(e);
+    const data = { email: entries["Email Address:"] };
+    return data;
+  };
   const editInputs = (
     <>
       <PassiveFormInput title={"Email Address:"} />
@@ -241,7 +246,22 @@ const PersonalInfo = ({ user }: { user: UserProps }) => {
     "Language:": upperCaseWords(user.language),
     "Phone Number:": user.phone_num ? user.phone_num : "N/A",
   };
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const entries = getFormInputs(e);
+    const data = {
+      language: entries["Language:"],
+      company: {
+        name: entries["Company Name:"],
+        occupation: entries["Occupation:"],
+      },
+      address: {
+        city: entries["City:"],
+        country: entries["Country:"],
+      },
+      phone_num: entries["Phone Number:"],
+    };
+    return data;
+  };
 
   const editInputs = (
     <>
