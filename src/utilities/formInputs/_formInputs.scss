@@ -20,3 +20,30 @@
     height: 1em;
   }
 }
+.form-dropdown-container {
+  display: flex;
+  flex-direction: column;
+  color: $light-black;
+  font-size: 100%;
+  font-weight: 600;
+  font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  & > label {
+    margin-bottom: 0.4em;
+  }
+  .dropdown-input__control {
+    border-radius: 0.3em;
+    min-height: unset;
+    box-shadow: 0px 0.3em 0.3em rgba(0, 0, 0, 0.08);
+    border-color: $lighter-gray;
+    border-style: 0.5px;
+  }
+  .dropdown-input__value-container,
+  .dropdown-input__menu {
+    font-size: 90%;
+  }
+
+  .dropdown-input__indicator {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

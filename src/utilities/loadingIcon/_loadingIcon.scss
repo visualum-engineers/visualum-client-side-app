@@ -1,4 +1,4 @@
-.loading-icon-entire-viewport{
+.loading-icon-entire-viewport {
   position: absolute;
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@
   margin: 0 auto;
   width: 2.5rem;
   &:before {
-    content: '';
+    content: "";
     display: block;
     padding-top: 100%;
   }
@@ -33,7 +33,7 @@
 .loading-icon-path {
   stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;
-  //stroke: $dark-blue;
+  stroke: $purple;
   animation: dash 1.5s ease-in-out infinite;
   stroke-linecap: round;
 }

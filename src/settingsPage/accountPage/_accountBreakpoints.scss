@@ -4,12 +4,16 @@
     flex-direction: column;
     justify-content: start;
     flex-wrap: unset;
-    .form-inputs-container {
+    .form-inputs-container,
+    .form-dropdown-container {
       margin: 0%;
       padding: 0 2%;
       margin-bottom: 1.5em;
       width: auto;
     }
+  }
+  .#{$namespace}-form-submit-btns {
+    padding: 5%;
   }
   .#{$namespace}-form-title {
     width: auto;

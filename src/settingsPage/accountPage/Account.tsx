@@ -3,13 +3,19 @@ import UserProfile, {
 } from "../../utilities/userProfile/UserProfile";
 import axios from "axios";
 import { v4 as uuid } from "uuid";
-import PassiveFormInput from "../../utilities/formInputs/FormInputs";
+import PassiveFormInput, {
+  ControlledDropDownInput,
+  isMultiValue,
+  PassiveDropDownInput,
+  transformToOptions,
+} from "../../utilities/formInputs/FormInputs";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import useFormEdit from "./use-form-edit";
-import LoadingIcon from "../../utilities/loadingIcon/LoadingIcon";
+import { LoadingIconFillContainer } from "../../utilities/loadingIcon/LoadingIcon";
+import upperCaseWords from "../../utilities/helpers/upperCaseWords";
 const namespace = "settings-pg-account";
 const testUser = {
   _id: uuid(),
@@ -17,6 +23,8 @@ const testUser = {
   last_name: "Sameniego",
   language: "english",
 };
+const hobbies = transformToOptions(["Travel", "Lol"]);
+const hobbiesOptions = isMultiValue(hobbies) ? hobbies : [];
 const DisplayInput = ({ title, value }: { title: string; value: string }) => {
   return (
     <div className={`form-inputs-container ${namespace}-display-input`}>
@@ -42,9 +50,10 @@ const AccountFormWrapper = ({
   title?: string;
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void | object;
 }) => {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [err, setErr] = useState({ err: false, message: "" });
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsLoading(true);
     const submissionObject = onSubmit ? onSubmit(e) : {};
     const userData = { ...user, ...submissionObject };
@@ -66,11 +75,7 @@ const AccountFormWrapper = ({
   };
   return (
     <form className={`${namespace}-form`} onSubmit={onSubmitForm}>
-      {isLoading && (
-        <div>
-          <LoadingIcon />
-        </div>
-      )}
+      {isLoading && <LoadingIconFillContainer background="#F3F3F3" />}
       <div className={`${namespace}-form-title`}>
         <h3>{title}</h3>
         {!editMode && (
@@ -107,24 +112,49 @@ const AccountFormWrapper = ({
 
 const Profile = ({ user }: { user: UserProps }) => {
   const { editState, editCallback } = useFormEdit();
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+  // const [interests, setInterests] = useState(
+  //   user.interests ? user.interests : []
+  // );
   const inputValues: { [key: string]: string | string[] } = {
     "First Name:": user.first_name,
     "Last Name:": user.last_name,
-    "Hobbies/Interests:": user.interests ? user.interests : "N/A",
     "Personal Website:": user.personal_website ? user.personal_website : "N/A",
+    "Hobbies/Interests:": user.interests ? user.interests : "N/A",
   };
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const formData = new FormData(e.currentTarget);
+    const entries = Object.fromEntries(formData.entries());
+    const data = {
+      first_name: entries["First Name:"],
+      last_name: entries["Last Name:"],
+      personal_website: entries["Personal Website:"],
+      interests:
+        typeof entries["Hobbies/Interests:"] === "string"
+          ? JSON.parse(entries["Hobbies/Interests:"])
+          : "",
+    };
+    return data;
+  };
+
   const editInputs = (
     <>
-      {Object.entries(inputValues).map(([key, value]) => (
-        <PassiveFormInput
-          key={key}
-          title={key}
-          defaultValue={
-            Array.isArray(value) ? value[0] : value !== "N/A" ? value : ""
-          }
-        />
-      ))}
+      {Object.entries(inputValues)
+        .filter(([key, value]) => key !== "Hobbies/Interests:")
+        .map(([key, value]) => (
+          <PassiveFormInput
+            key={key}
+            title={key}
+            defaultValue={
+              Array.isArray(value) ? value[0] : value !== "N/A" ? value : ""
+            }
+          />
+        ))}
+      <PassiveDropDownInput
+        title={"Hobbies/Interests:"}
+        options={hobbiesOptions}
+        isMulti
+        isClearable
+      />
     </>
   );
   const displayInputs = (
@@ -187,32 +217,32 @@ const LoginInfo = ({ user }: { user: UserProps }) => {
 };
 const PersonalInfo = ({ user }: { user: UserProps }) => {
   const { editState, editCallback } = useFormEdit();
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
   const inputValues: { [key: string]: string | string[] } = {
     "Company Name:": user.company
       ? user.company.name
-        ? user.company.name
+        ? upperCaseWords(user.company.name)
         : "N/A"
       : "N/A",
     "Occupation:": user.company
       ? user.company.occupation
-        ? user.company.occupation
+        ? upperCaseWords(user.company.occupation)
         : "N/A"
       : "N/A",
     "City:": user.address
       ? user.address.city
-        ? user.address.city
+        ? upperCaseWords(user.address.city)
         : "N/A"
       : "N/A",
     "Country:": user.address
       ? user.address.country
-        ? user.address.country
+        ? upperCaseWords(user.address.country)
         : "N/A"
       : "N/A",
-    "Language:": user.language,
+    "Language:": upperCaseWords(user.language),
     "Phone Number:": user.phone_num ? user.phone_num : "N/A",
   };
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {};
+
   const editInputs = (
     <>
       {Object.entries(inputValues).map(([key, value]) => (

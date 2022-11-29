@@ -17,7 +17,7 @@ $namespace: "settings-pg-account";
   &:last-child {
     margin-bottom: 0;
   }
-  .form-inputs-container {
+  .form-inputs-container, .form-dropdown-container {
     margin: 0 5%;
     margin-bottom: 1.7em;
     width: 40%;
@@ -61,7 +61,7 @@ $namespace: "settings-pg-account";
   display: flex;
   width: 100%;
   justify-content: end;
-  padding: 5%;
+  padding: 3% 5%;
   height: 2rem;
   button {
     cursor: pointer;
