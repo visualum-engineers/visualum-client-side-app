@@ -125,14 +125,20 @@ const Profile = ({ user }: { user: UserProps }) => {
   };
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const entries = getFormInputs(e);
+    let interests: UserProps["interests"];
+    try {
+      interests =
+        typeof entries["Hobbies/Interests:"] === "string"
+          ? JSON.parse(entries["Hobbies/Interests:"])
+          : [];
+    } catch (err) {
+      interests = [];
+    }
     const data = {
       first_name: entries["First Name:"],
       last_name: entries["Last Name:"],
       personal_website: entries["Personal Website:"],
-      interests:
-        typeof entries["Hobbies/Interests:"] === "string"
-          ? JSON.parse(entries["Hobbies/Interests:"])
-          : "",
+      interests: interests,
     };
     return data;
   };
@@ -150,12 +156,18 @@ const Profile = ({ user }: { user: UserProps }) => {
             }
           />
         ))}
-      <PassiveCreateDropDownInput
+      <PassiveDropDownInput
         title={"Hobbies/Interests:"}
         options={hobbiesOptions}
         isMulti
         isClearable
       />
+      {/* <PassiveCreateDropDownInput
+        title={"Hobbies/Interests:"}
+        options={hobbiesOptions}
+        isMulti
+        isClearable
+      /> */}
     </>
   );
   const displayInputs = (

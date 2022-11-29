@@ -158,7 +158,9 @@ export const PassiveDropDownInput = ({
         }}
         name={`${title}`}
         value={value}
-        onChange={() => {}}
+        onChange={(e) => {
+          e.preventDefault();
+        }}
       />
     </div>
   );
