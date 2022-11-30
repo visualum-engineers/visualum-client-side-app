@@ -1,0 +1,12 @@
+@mixin settings-integrations-md {
+    $namespace: "settings-integrations-pg";
+
+  .#{$namespace}-tab {
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+}
+@mixin settings-integrations-sm {
+    $namespace: "settings-integrations-pg";
+
+}

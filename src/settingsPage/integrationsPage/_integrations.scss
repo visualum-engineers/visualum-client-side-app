@@ -1,0 +1,46 @@
+$namespace: "settings-integrations-pg";
+.#{$namespace}-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.#{$namespace}-link-accounts {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.#{$namespace}-tab {
+  cursor: pointer;
+  @include remove-btn-default;
+  margin: 0.5rem 2.5%;
+  width: 45%;
+  font-size: 1.1em;
+  height: 2.75rem;
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease-out 0.2s;
+  span {
+    margin-left: 0.3rem;
+  }
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+.#{$namespace}-integrations {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  //justify-content: space-between;
+  //padding: 3%;
+  .#{$namespace}-square {
+    width: 40%;
+    margin: 2.5%;
+    aspect-ratio: 1/1;
+  }
+}
