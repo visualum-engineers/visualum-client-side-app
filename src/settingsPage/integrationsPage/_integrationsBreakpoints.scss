@@ -1,12 +1,32 @@
 @mixin settings-integrations-md {
-    $namespace: "settings-integrations-pg";
-
+  $namespace: "settings-integrations-pg";
+  .#{$namespace}-container {
+    h3 {
+      margin: 1rem 0;
+    }
+  }
   .#{$namespace}-tab {
     margin: 0.5rem 0;
     width: 100%;
   }
+  .#{$namespace}-integrations {
+    justify-content: start;
+    .#{$namespace}-square {
+      max-width: unset;
+      width: 40%;
+      margin: 5%;
+    }
+  }
 }
 @mixin settings-integrations-sm {
-    $namespace: "settings-integrations-pg";
-
+  $namespace: "settings-integrations-pg";
+  .#{$namespace}-integrations {
+    justify-content: space-around;
+    .#{$namespace}-square {
+      max-width: unset;
+      width: 44%;
+      margin: 3%;
+    }
+  }
+  
 }

@@ -1,4 +1,6 @@
 import facebookLoginFlow from "../../utilities/helpers/facebookLogin";
+import { IconDefinition, IconProp } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
   faInstagram,
@@ -7,8 +9,8 @@ import {
   faSnapchat,
   faTiktok,
 } from "@fortawesome/free-brands-svg-icons";
-import { IconDefinition, IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Avatar from "../../utilities/reactAvatar/react-avatar";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const namespace = "settings-integrations-pg";
 const instagramGradient = `radial-gradient(
     circle farthest-corner at 35% 90%,
@@ -79,19 +81,19 @@ const integrationData: {
     icon: faTiktok,
     text: "Link your TikTok",
     color: "rgb(255,255,255)",
-    bgColor: "black"
+    bgColor: "black",
   },
   LinkedIn: {
     icon: faLinkedin,
     text: "Link your LinkedIn",
     color: "rgb(255,255,255)",
-    bgColor: "#0072b1"
+    bgColor: "#0072b1",
   },
   SnapChat: {
     icon: faSnapchat,
     text: "Link your Snapchat",
     color: "black",
-    bgColor: "#FFFC00"
+    bgColor: "#FFFC00",
   },
   Twitter: {
     icon: faTwitter,
@@ -132,13 +134,67 @@ const IntegrationTab = ({
     </button>
   );
 };
-const IntegrationSqaure = ({ icon }: { icon: string }) => {
-  return <div className={`${namespace}-square`}></div>;
+type AccountInfo = {
+  username: string;
+  icon: IconDefinition;
+  profileImgUrl?: string;
+  profileUrl?: string;
+};
+const IntegrationSquare = ({
+  username,
+  profileImgUrl,
+  profileUrl,
+  icon,
+  onClose,
+}: AccountInfo & {
+  onClose?: (e?: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}) => {
+  const innerEls = (
+    <>
+      <div className={`${namespace}-square-img-container`}>
+        {profileImgUrl ? (
+          <img src={profileImgUrl} alt={`profile-pic-for-${username}`} />
+        ) : (
+          <Avatar
+            name={username}
+            className={`${namespace}-user-avatar`}
+            size={"100%"}
+            round={true}
+            style={{ width: "35%", height: "auto", aspectRatio: "1/1" }}
+          />
+        )}
+      </div>
+      <div className={`${namespace}-username`}>{username}</div>
+    </>
+  );
+  return (
+    <div className={`${namespace}-square`}>
+      <div className={`${namespace}-square-icon`}>
+        <FontAwesomeIcon icon={icon} />
+      </div>
+      <button aria-label={`unlink-${username}-account`} onClick={onClose}>
+        <FontAwesomeIcon icon={faTimes} />
+      </button>
+      {profileUrl ? (
+        <a
+          className={`${namespace}-square-container`}
+          target={"_blank"}
+          rel="noopener noreferrer"
+          href={profileUrl}
+        >
+          {innerEls}
+        </a>
+      ) : (
+        <div className={`${namespace}-square-container`}>{innerEls}</div>
+      )}
+    </div>
+  );
 };
 const Integrations = () => {
   return (
     <div className={`${namespace}-container`}>
       <div className={`${namespace}-link-accounts`}>
+        <h3>Connect Accounts</h3>
         {Object.entries(integrationData).map(([key, value]) => (
           <IntegrationTab
             key={key}
@@ -151,7 +207,14 @@ const Integrations = () => {
           />
         ))}
       </div>
-      <div className={`${namespace}-integrations`}></div>
+      {/* <div className={`${namespace}-divider`}></div> */}
+      <div className={`${namespace}-integrations`}>
+        <h3>Linked Accounts</h3>
+        <IntegrationSquare username={"arky.asmal"} icon={faFacebook} />
+        <IntegrationSquare username={"arky.asmal"} icon={faFacebook} />
+        <IntegrationSquare username={"arky.asmal"} icon={faFacebook} />
+        <IntegrationSquare username={"arky.asmal"} icon={faFacebook} />
+      </div>
     </div>
   );
 };
