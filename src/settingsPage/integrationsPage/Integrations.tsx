@@ -151,6 +151,9 @@ const IntegrationSquare = ({
 }) => {
   const innerEls = (
     <>
+      <div className={`${namespace}-square-icon`}>
+        <FontAwesomeIcon icon={icon} />
+      </div>
       <div className={`${namespace}-square-img-container`}>
         {profileImgUrl ? (
           <img src={profileImgUrl} alt={`profile-pic-for-${username}`} />
@@ -169,9 +172,6 @@ const IntegrationSquare = ({
   );
   return (
     <div className={`${namespace}-square`}>
-      <div className={`${namespace}-square-icon`}>
-        <FontAwesomeIcon icon={icon} />
-      </div>
       <button aria-label={`unlink-${username}-account`} onClick={onClose}>
         <FontAwesomeIcon icon={faTimes} />
       </button>
@@ -207,13 +207,43 @@ const Integrations = () => {
           />
         ))}
       </div>
-      {/* <div className={`${namespace}-divider`}></div> */}
       <div className={`${namespace}-integrations`}>
         <h3>Linked Accounts</h3>
-        <IntegrationSquare username={"arky.asmal"} icon={faFacebook} />
-        <IntegrationSquare username={"arky.asmal"} icon={faFacebook} />
-        <IntegrationSquare username={"arky.asmal"} icon={faFacebook} />
-        <IntegrationSquare username={"arky.asmal"} icon={faFacebook} />
+        <IntegrationSquare
+          username={"arky.asmal"}
+          icon={faFacebook}
+          profileUrl={"https://www.facebook.com/arky.asmal/"}
+        />
+        <IntegrationSquare
+          username={"arky.asmal"}
+          icon={faFacebook}
+          profileUrl={"https://www.facebook.com/arky.asmal/"}
+        />
+        <IntegrationSquare
+          username={"arky.asmal"}
+          icon={faFacebook}
+          profileUrl={"https://www.facebook.com/arky.asmal/"}
+        />
+        <IntegrationSquare
+          username={"arky.asmal"}
+          icon={faFacebook}
+          profileUrl={"https://www.facebook.com/arky.asmal/"}
+        />
+        <IntegrationSquare
+          username={"arky.asmal"}
+          icon={faFacebook}
+          profileUrl={"https://www.facebook.com/arky.asmal/"}
+        />
+        <IntegrationSquare
+          username={"arky.asmal"}
+          icon={faFacebook}
+          profileUrl={"https://www.facebook.com/arky.asmal/"}
+        />
+        <IntegrationSquare
+          username={"arky.asmal"}
+          icon={faFacebook}
+          profileUrl={"https://www.facebook.com/arky.asmal/"}
+        />
       </div>
     </div>
   );

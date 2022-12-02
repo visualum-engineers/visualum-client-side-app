@@ -19,8 +19,8 @@ import upperCaseWords from "../../utilities/helpers/upperCaseWords";
 const namespace = "settings-pg-account";
 const testUser = {
   _id: uuid(),
-  first_name: "Emilio",
-  last_name: "Sameniego",
+  first_name: "Jenny",
+  last_name: "Elle",
   language: "english",
 };
 const hobbies = transformToOptions(["Travel", "Lol"]);

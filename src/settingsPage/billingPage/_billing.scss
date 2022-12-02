@@ -1,0 +1,25 @@
+$namespace: "settings-billing-pg";
+.#{$namespace}-container {
+  display: flex;
+  flex-direction: column;
+  h3 {
+    font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: $light-black;
+    margin: 1rem 2%;
+    width: 100%;
+  }
+  button{
+    @include remove-btn-default;
+    cursor: pointer;
+  }
+}
+.#{$namespace}-subscription {
+  display: flex;
+}
+.#{$namespace}-linked-cards {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
