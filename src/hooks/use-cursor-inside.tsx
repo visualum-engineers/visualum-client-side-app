@@ -1,22 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-const useCursorInside = (el: HTMLElement | null) => {
+const useCursorInside = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
   const [inside, setInside] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  //RE-RENDER AT LEAST ONCE TO SET REF
+  useEffect(() => {
+    if (!mounted) setMounted(true);
+  }, [mounted]);
   useEffect(() => {
     const hoverInFunc = () => setInside(true);
     const hoverOutFunc = () => setInside(false);
     const touchDown = () => setInside((state) => !state);
-    if (!el) return;
-    el.addEventListener("mouseenter", hoverInFunc);
-    el.addEventListener("mouseleave", hoverOutFunc);
-    el.addEventListener("touchdown", touchDown);
+    if (!ref.current) return;
+    ref.current.addEventListener("mouseenter", hoverInFunc);
+    ref.current.addEventListener("mouseleave", hoverOutFunc);
+    ref.current.addEventListener("touchdown", touchDown);
     const cleanup = () => {
-      el.removeEventListener("mouseenter", hoverInFunc);
-      el.removeEventListener("mouseleave", hoverOutFunc);
-      el.removeEventListener("touchdown", touchDown);
+      if (!ref.current) return;
+      ref.current.removeEventListener("mouseenter", hoverInFunc);
+      ref.current.removeEventListener("mouseleave", hoverOutFunc);
+      ref.current.removeEventListener("touchdown", touchDown);
     };
     return () => cleanup();
   });
-  return inside;
+  return { ref, inside };
 };
 export default useCursorInside;

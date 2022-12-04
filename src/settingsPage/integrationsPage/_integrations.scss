@@ -13,6 +13,10 @@ $namespace: "settings-integrations-pg";
     color: $light-black;
     font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   }
+  button {
+    @include remove-btn-default;
+    cursor: pointer;
+  }
 }
 .#{$namespace}-link-accounts {
   display: flex;

@@ -2,16 +2,24 @@ $purple: #041c54;
 $orange: #fc8304;
 $blue: #3277f7;
 $red: #ff0000;
-$light-red: #FF9790;
-$light-gray: #C2C2C2;
-$lighter-gray: #DCDCDC;
+$light-red: #ff9790;
+$light-gray: #c2c2c2;
+$lighter-gray: #dcdcdc;
 $gray: #9e9e9e;
-$light-black: #4B4B4B;
-$white: #FDFDFD;
-$off-white: #F3F3F3;
+$light-black: #4b4b4b;
+$white: #fdfdfd;
+$off-white: #f3f3f3;
 $navbar-height: 3rem;
 @mixin remove-btn-default {
-    background-color: transparent;
-    border: none;
-    outline: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+@mixin img-fill {
+  img {
+    object-fit: contain;
+    object-position: center;
+    width: 100%;
+    height: 100%;
   }
+}

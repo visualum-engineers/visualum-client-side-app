@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 import PassiveFormInput, {
   isMultiValue,
   PassiveCreateDropDownInput,
-  PassiveDropDownInput,
+  //PassiveDropDownInput,
   transformToOptions,
 } from "../../utilities/formInputs/FormInputs";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -156,18 +156,18 @@ const Profile = ({ user }: { user: UserProps }) => {
             }
           />
         ))}
-      <PassiveDropDownInput
-        title={"Hobbies/Interests:"}
-        options={hobbiesOptions}
-        isMulti
-        isClearable
-      />
-      {/* <PassiveCreateDropDownInput
+      {/* <PassiveDropDownInput
         title={"Hobbies/Interests:"}
         options={hobbiesOptions}
         isMulti
         isClearable
       /> */}
+      <PassiveCreateDropDownInput
+        title={"Hobbies/Interests:"}
+        options={hobbiesOptions}
+        isMulti
+        isClearable
+      />
     </>
   );
   const displayInputs = (

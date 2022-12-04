@@ -1,6 +1,6 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import {useState } from "react";
 import Avatar, { ConfigProvider } from "../reactAvatar/react-avatar";
 import useCursorInside from "../../hooks/use-cursor-inside";
 import useWindowWidth from "../../hooks/use-window-width";
@@ -48,12 +48,7 @@ const UserProfile = ({
   editControls?: boolean;
   imageSize?: string;
 }) => {
-  const ref = useRef<HTMLDivElement | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
-  const buttonInside = useCursorInside(isMounted ? ref.current : null);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const {ref, inside : buttonInside} = useCursorInside();
   const smallWindowWidth = useWindowWidth(576);
   const [changeProfile, setChangeProfile] = useState(false);
   //subject to change depending on user id
