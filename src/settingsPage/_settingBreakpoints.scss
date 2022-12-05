@@ -1,5 +1,7 @@
 @import "./accountPage/accountBreakpoints";
 @import "./integrationsPage/integrationsBreakpoints";
+@import "./billingPage/billingBreakpoints";
+@import "./notificationsPage/notificationsBreakpoints";
 @mixin settings-pg-md {
   $namespace: "settings-pg";
   .#{$namespace}-setting-item {
@@ -9,6 +11,7 @@
     }
   }
   @include settings-integrations-md;
+  @include settings-notifications-md;
 }
 @mixin settings-pg-sm {
   $namespace: "settings-pg";
@@ -26,4 +29,6 @@
   }
   @include settings-account-sm;
   @include settings-integrations-sm;
+  @include settings-billing-sm;
+  @include settings-notifications-sm;
 }

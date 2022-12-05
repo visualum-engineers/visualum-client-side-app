@@ -1,0 +1,124 @@
+$namespace: "settings-pg-notifications";
+.#{$namespace}-form {
+  display: flex;
+  flex-direction: column;
+  button[type="submit"] {
+    @include remove-btn-default;
+    cursor: pointer;
+    background-color: $blue;
+    color: $white;
+    width: min-content;
+    align-self: flex-end;
+    align-self: end;
+    font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    height: 2rem;
+    padding: 0 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    margin-right: 2rem;
+  }
+}
+
+.#{$namespace}-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 2.5rem;
+  margin-left: 5%;
+}
+.#{$namespace}-nav-item {
+  margin-right: 1rem;
+  &:last-child {
+    margin-right: 0rem;
+  }
+  label {
+    position: relative;
+    font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: $gray;
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+
+  input[type="radio"]:checked + label {
+    color: $orange;
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: -25%;
+      left: 0;
+      height: 0;
+      width: 100%;
+      border-bottom: 0.1em solid $orange;
+    }
+  }
+}
+.#{$namespace}-form-inner {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+.#{$namespace}-category {
+  width: 40%;
+  margin: 5%;
+  margin-bottom: 0;
+  margin-top: 1rem;
+  h4 {
+    font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0;
+    margin-bottom: 1rem;
+    color: $light-black;
+  }
+}
+.#{$namespace}-checkbox {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1.25rem;
+  label {
+    display: flex;
+    font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 88%;
+    color: $light-black;
+    .checkbox {
+      position: relative;
+      aspect-ratio: 1/1;
+      width: 1em;
+      height: 1em;
+      border-radius: 0.2em;
+      background-color: $white;
+      border: 1px solid $orange;
+      margin-right: 0.6em;
+    }
+    .check {
+      display: none;
+      position: absolute;
+      z-index: 1;
+      content: "";
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      font-size: 80%;
+      color: $white;
+    }
+  }
+  input[type="checkbox"]:checked + label {
+    .checkbox {
+      background-color: $orange;
+    }
+    .check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

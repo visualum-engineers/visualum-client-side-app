@@ -1,0 +1,8 @@
+@mixin settings-notifications-md {
+}
+@mixin settings-notifications-sm {
+  $namespace: "settings-pg-notifications";
+  .#{$namespace}-category {
+    width: 90%;
+  }
+}

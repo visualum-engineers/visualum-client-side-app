@@ -1,0 +1,12 @@
+@mixin settings-billing-md {
+}
+@mixin settings-billing-sm {
+  $namespace: "settings-billing-pg";
+  .#{$namespace}-billing-card {
+    flex-direction: column;
+  }
+  .#{$namespace}-billing-card-remove-btn {
+    align-self: center;
+    margin-bottom: 2rem;
+  }
+}

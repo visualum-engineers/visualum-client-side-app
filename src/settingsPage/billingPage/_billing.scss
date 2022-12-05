@@ -8,7 +8,8 @@ $namespace: "settings-billing-pg";
     font-weight: 600;
     font-size: 1.5rem;
     color: $light-black;
-    margin: 1rem 2%;
+    margin: 0 2%;
+    margin-bottom: 1rem;
     width: 100%;
   }
   button {
@@ -25,6 +26,7 @@ $namespace: "settings-billing-pg";
   flex-wrap: wrap;
   width: 100%;
   margin: 0 2%;
+  margin-bottom: 1rem;
 }
 .#{$namespace}-subscription-description {
   font-family: "Lato", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
