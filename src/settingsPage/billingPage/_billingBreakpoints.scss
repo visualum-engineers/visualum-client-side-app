@@ -2,6 +2,9 @@
 }
 @mixin settings-billing-sm {
   $namespace: "settings-billing-pg";
+  .#{$namespace}-container {
+    padding: 0;
+  }
   .#{$namespace}-billing-card {
     flex-direction: column;
   }
