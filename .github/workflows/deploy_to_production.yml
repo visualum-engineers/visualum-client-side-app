@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: 
       name: prd
-      url: visualum.com
+      url: www.visualum.com
     steps:
     - uses: actions/checkout@v1
     - uses: aasmal97/deploy-react-app-to-aws@v1.2.0
