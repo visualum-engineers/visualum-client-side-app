@@ -1,0 +1,21 @@
+$namespace: "err-banner";
+.#{$namespace}-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: $lighter-red;
+  color: $dark-red;
+  border: 1px solid $dark-red;
+  padding: 4%;
+  border-radius: 0.5em;
+  margin-bottom: 1rem;
+  font-family: 'Lato','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.#{$namespace}-close-btn {
+  color: $white;
+  position: absolute;
+  font-size: 1em;
+  top: 1%;
+  right: 1%;
+}

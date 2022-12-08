@@ -16,6 +16,7 @@ import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import useFormEdit from "./use-form-edit";
 import { LoadingIconFillContainer } from "../../utilities/loadingIcon/LoadingIcon";
 import upperCaseWords from "../../utilities/helpers/upperCaseWords";
+import ErrBanner from "../../utilities/errBanner/ErrBanner";
 const namespace = "settings-pg-account";
 const testUser = {
   _id: uuid(),
@@ -56,7 +57,10 @@ const AccountFormWrapper = ({
   onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void | object;
 }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [err, setErr] = useState({ err: false, message: "" });
+  const [err, setErr] = useState({
+    err: false,
+    message: "",
+  });
   const onSubmitForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
@@ -83,6 +87,7 @@ const AccountFormWrapper = ({
       {isLoading && <LoadingIconFillContainer background="#F3F3F3" />}
       <div className={`${namespace}-form-title`}>
         <h3>{title}</h3>
+
         {!editMode && (
           <button
             type="button"
@@ -95,6 +100,11 @@ const AccountFormWrapper = ({
           </button>
         )}
       </div>
+      {err.err && (
+        <ErrBanner>
+          <>{err.message}</>
+        </ErrBanner>
+      )}
       {children}
       {editMode && (
         <div className={`${namespace}-form-submit-btns`}>

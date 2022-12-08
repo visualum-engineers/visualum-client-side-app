@@ -22,6 +22,10 @@ $namespace: "settings-pg-account";
     margin-bottom: 1.7em;
     width: 40%;
   }
+  .err-banner-container{
+    margin: 0 5%;
+    margin-bottom: 1rem;
+  }
 }
 .#{$namespace}-form-title {
   margin: 0 5%;

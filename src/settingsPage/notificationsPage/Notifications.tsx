@@ -5,7 +5,7 @@ import {
 } from "./NotificationUtilities";
 import NotificationNav from "./NotificationNav";
 import {
-  replaceSnakeCaseWithSpaces,
+  //replaceSnakeCaseWithSpaces,
   snakeCaseWords,
 } from "../../utilities/helpers/snakeCaseWords";
 
@@ -42,9 +42,9 @@ const EmailNotifications = () => {
     </>
   );
 };
-const PushNotifications = () => {
-  return <></>;
-};
+// const PushNotifications = () => {
+//   return <></>;
+// };
 
 const Notifications = () => {
   return (
