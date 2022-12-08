@@ -17,4 +17,4 @@ jobs:
           cloudfront_distribution_id: ${{ secrets.AWS_APP_DISTRIBUTION_ID }}
           bucket_name: ${{ secrets.AWS_APP_BUCKET_NAME }}
           deployment_url: www.visualum.com
-          environment_name: production
+          environment_name: prd
