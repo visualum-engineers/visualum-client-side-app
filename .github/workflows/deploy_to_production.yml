@@ -1,0 +1,20 @@
+name: Deploy to production
+on: 
+  push:
+    branches:
+      - production #here we choose to deploy only when a push is on production
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: action/deploy-react-app-to-aws
+      secrets: inherit
+      with: 
+          aws_region: ${{ secrets.aws_region }}
+          aws_access_key_id: ${{ secrets.aws_access_key_id }}
+          aws_secret_access_key: ${{ secrets.aws_secret_key }}
+          cloudfront_distribution_id: ${{ secrets.aws_distribution_id }}
+          bucket_name: ${{ secrets.aws_bucket_name }}
+          deployment_url: www.visualum.com
+          environment_name: production
